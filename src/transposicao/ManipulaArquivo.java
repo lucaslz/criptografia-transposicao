@@ -60,23 +60,17 @@ public class ManipulaArquivo {
     }
     
     public boolean verificaSeArquivoExiste()
-    {   
-        if (getArquivo().exists()) {
-            return false;
-        } else {
-            return false;
-        }
-    }
-    
-    public boolean criaArquivo()
     {
-        try {
-            getArquivo().createNewFile();
-            return true;
-        } catch (IOException ex) {
-            printStackTrace("Não foi possivel criar o arquivo");
-            return false;
+        if (!getArquivo().exists()) {
+            try {
+                getArquivo().createNewFile();
+                return true;
+            } catch (IOException ex) {
+                printStackTrace("Não foi possivel criar o arquivo");
+                return false;
+            }
         }
+        return true;
     }
     
     public boolean escerver(String palavra)
@@ -92,8 +86,9 @@ public class ManipulaArquivo {
                 printStackTrace("Não foi possivel escrever no arquivo.");
                 return false;
             }
+        } else {
+            return false;
         }
-        return false;
     }
     
     public ArrayList ler()

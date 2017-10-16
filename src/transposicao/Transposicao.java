@@ -44,8 +44,10 @@ public class Transposicao {
         arquivo.setNome(getEntradaChave());
         arquivo.escerver(getChave());
         
-        //Transpondo a frase
-        transporFrase();
+        //Transpondo a frase e escrever no arquivo de saida
+        String palavraTransposta = transporFrase();
+        arquivo.setNome(getSaidaCriptografada());
+        arquivo.escerver(palavraTransposta);
         
     }
 
@@ -85,7 +87,7 @@ public class Transposicao {
         Transposicao.chave = chave;
     }
     
-    public static void transporFrase()
+    public static String transporFrase()
     {
         //Definindo valor dos Fors que iram rodar
         int totalFrase = getFrase().length();
@@ -129,6 +131,7 @@ public class Transposicao {
         }
         
         String palavraCompleta = string.toString();
-        System.out.println("\n" + palavraCompleta);
+        
+        return palavraCompleta;
     }
 }
